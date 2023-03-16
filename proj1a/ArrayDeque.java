@@ -13,6 +13,9 @@ public class ArrayDeque<T> {
 
 	/** Adds the item to the front of the list. */
 	public void addFirst(T item) {
+		if (size == 0) {
+			tail = tail == items.length - 1 ? 0 : tail + 1;
+		}
 		items[head] = item;
 		size = size + 1;
 		head = head == 0 ? items.length - 1 : head - 1;
@@ -20,6 +23,9 @@ public class ArrayDeque<T> {
 
 	/** Adds the item to the end of the list. */
 	public void addLast(T item) {
+		if (size == 0) {
+			head = head == 0 ? items.length - 1 : head - 1;
+		}
 		items[tail] = item;
 		size = size + 1;
 		tail = tail == items.length - 1 ? 0 : tail + 1;
