@@ -1,9 +1,9 @@
 public class LinkedListDeque<T> {
 	/** This internal class will not be used by user. */
 	private class Node {
-		public T item;
-		public Node pre;
-		public Node next;
+		private T item;
+		private Node pre;
+		private Node next;
 
 		public Node(T i, Node p, Node n) {
 			item = i;
@@ -29,23 +29,6 @@ public class LinkedListDeque<T> {
 		endSentinel.next = frontSentinel;
 
 		size = 0;
-	}
-
-	public LinkedListDeque(T x) {
-		frontSentinel = new Node(null, null, null);
-		endSentinel = new Node(null, null, null);
-		Node node = new Node(x, null, null);
-
-		frontSentinel.next = node;
-		node.pre = frontSentinel;
-		node.next = endSentinel;
-		endSentinel.pre = node;
-
-		/* Make circular sentinel */
-		frontSentinel.pre = endSentinel;
-		endSentinel.next = frontSentinel;
-
-		size = 1; 
 	}
 
 	/** Adds the item to the front of the list. */
@@ -80,6 +63,9 @@ public class LinkedListDeque<T> {
 
 	/** Remove the first item of the list and returns. */
 	public T removeFirst() {
+		if (size == 0) {
+			return null;
+		}
 		Node node = frontSentinel.next;
 		frontSentinel.next = node.next;
 		node.next.pre = frontSentinel;
@@ -89,6 +75,9 @@ public class LinkedListDeque<T> {
 
 	/** Remove the last item of the list and returns. */
 	public T removeLast() {
+		if (size == 0) {
+			return null;
+		}
 		Node node = endSentinel.pre;
 		endSentinel.pre = node.pre;
 		node.pre.next = endSentinel;
@@ -117,8 +106,8 @@ public class LinkedListDeque<T> {
 	}
 
 	/** A method help complete getRecursive(int index). */
-	public T getRecursiveHelp(Node node, int index) {
-		if (index == 0){
+	private T getRecursiveHelp(Node node, int index) {
+		if (index == 0) {
 			return node.item;
 		}
 		return getRecursiveHelp(node.next, index - 1);

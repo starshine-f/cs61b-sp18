@@ -31,23 +31,6 @@ public class LinkedListDeque<T> implements Deque<T>{
 		size = 0;
 	}
 
-	public LinkedListDeque(T x) {
-		frontSentinel = new Node(null, null, null);
-		endSentinel = new Node(null, null, null);
-		Node node = new Node(x, null, null);
-
-		frontSentinel.next = node;
-		node.pre = frontSentinel;
-		node.next = endSentinel;
-		endSentinel.pre = node;
-
-		/* Make circular sentinel */
-		frontSentinel.pre = endSentinel;
-		endSentinel.next = frontSentinel;
-
-		size = 1; 
-	}
-
 	@Override
 	/** Adds the item to the front of the list. */
 	public void addFirst(T item) {
@@ -85,6 +68,9 @@ public class LinkedListDeque<T> implements Deque<T>{
 	@Override
 	/** Remove the first item of the list and returns. */
 	public T removeFirst() {
+		if (size == 0) {
+			return null;
+		}
 		Node node = frontSentinel.next;
 		frontSentinel.next = node.next;
 		node.next.pre = frontSentinel;
@@ -95,6 +81,9 @@ public class LinkedListDeque<T> implements Deque<T>{
 	@Override
 	/** Remove the last item of the list and returns. */
 	public T removeLast() {
+		if (size == 0) {
+			return null;
+		}
 		Node node = endSentinel.pre;
 		endSentinel.pre = node.pre;
 		node.pre.next = endSentinel;
@@ -124,7 +113,7 @@ public class LinkedListDeque<T> implements Deque<T>{
 	}
 
 	/** A method help complete getRecursive(int index). */
-	public T getRecursiveHelp(Node node, int index) {
+	private T getRecursiveHelp(Node node, int index) {
 		if (index == 0){
 			return node.item;
 		}
@@ -136,4 +125,5 @@ public class LinkedListDeque<T> implements Deque<T>{
 	public void printDeque() {
 
 	}
+
 }

@@ -37,6 +37,9 @@ public class ArrayDeque<T> {
 
 	/** Remove the first item of the list and returns. */
 	public T removeFirst() {
+		if (size == 0) {
+			return null;
+		}
 		T item = items[head];
 		size = size - 1;
 		head = head == items.length - 1 ? 0 : head + 1;
@@ -45,6 +48,9 @@ public class ArrayDeque<T> {
 
 	/** Remove the last item of the list and returns. */
 	public T removeLast() {
+		if (size == 0) {
+			return null;
+		}
 		T item = items[tail];
 		size = size - 1;
 		tail = tail == 0 ? items.length - 1 : tail - 1;
@@ -63,4 +69,5 @@ public class ArrayDeque<T> {
 	public void printDeque() {
 
 	}
+
 }
