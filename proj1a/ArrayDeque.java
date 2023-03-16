@@ -40,9 +40,9 @@ public class ArrayDeque<T> {
 		if (size == 0) {
 			return null;
 		}
-		T item = items[head];
 		size = size - 1;
 		head = head == items.length - 1 ? 0 : head + 1;
+		T item = items[head];
 		return item;
 	}
 
@@ -51,18 +51,18 @@ public class ArrayDeque<T> {
 		if (size == 0) {
 			return null;
 		}
-		T item = items[tail];
 		size = size - 1;
 		tail = tail == 0 ? items.length - 1 : tail - 1;
+		T item = items[tail];
 		return item;
 	}
 
 	/** Returns the item of the ith of the list. */
 	public T get(int index) {
-		if (head + index > items.length - 1) {
-			return items[head + index - items.length];
+		if (head + index + 1 > items.length - 1) {
+			return items[head + index - items.length + 1];
 		}
-		return items[head + index];
+		return items[head + index + 1];
 	}
 
 	/** Prints the items in the deque from first to last, separated by a space. */
