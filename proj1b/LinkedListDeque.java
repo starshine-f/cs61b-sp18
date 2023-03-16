@@ -1,9 +1,9 @@
-public class LinkedListDeque<T> implements Deque<T>{
+public class LinkedListDeque<T> implements Deque<T> {
 	/** This internal class will not be used by user. */
 	private class Node {
-		public T item;
-		public Node pre;
-		public Node next;
+		private T item;
+		private Node pre;
+		private Node next;
 
 		public Node(T i, Node p, Node n) {
 			item = i;
@@ -31,7 +31,6 @@ public class LinkedListDeque<T> implements Deque<T>{
 		size = 0;
 	}
 
-	@Override
 	/** Adds the item to the front of the list. */
 	public void addFirst(T item) {
 		Node node = new Node(item, null, null);
@@ -42,7 +41,6 @@ public class LinkedListDeque<T> implements Deque<T>{
 		size = size + 1;
 	}
 
-	@Override
 	/** Adds the item to the end of the list. */
 	public void addLast(T item) {
 		Node node = new Node(item, null, null);
@@ -53,19 +51,16 @@ public class LinkedListDeque<T> implements Deque<T>{
 		size = size + 1;
 	}
 
-	@Override
 	/** Returns the boolean value whether the list is empty. */
 	public boolean isEmpty() {
 		return size == 0;
 	}
 
-	@Override
 	/** Returns the size of the list. */ 
 	public int size() {
 		return size;
 	}
 
-	@Override
 	/** Remove the first item of the list and returns. */
 	public T removeFirst() {
 		if (size == 0) {
@@ -78,7 +73,6 @@ public class LinkedListDeque<T> implements Deque<T>{
 		return node.item;
 	}
 
-	@Override
 	/** Remove the last item of the list and returns. */
 	public T removeLast() {
 		if (size == 0) {
@@ -91,7 +85,6 @@ public class LinkedListDeque<T> implements Deque<T>{
 		return node.item;
 	}
 
-	@Override
 	/** Returns the item of the ith of the list. */
 	public T get(int index) {
 		Node p = frontSentinel.next;
@@ -114,16 +107,14 @@ public class LinkedListDeque<T> implements Deque<T>{
 
 	/** A method help complete getRecursive(int index). */
 	private T getRecursiveHelp(Node node, int index) {
-		if (index == 0){
+		if (index == 0) {
 			return node.item;
 		}
 		return getRecursiveHelp(node.next, index - 1);
 	}
 
-	@Override
 	/** Prints the items in the deque from first to last, separated by a space. */
 	public void printDeque() {
 
 	}
-
 }

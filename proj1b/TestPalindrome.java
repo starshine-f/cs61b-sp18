@@ -26,7 +26,7 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIspalindrome_new() {
+    public void testNewIspalindrome() {
         OffByOne offByOne = new OffByOne();
         assertFalse(palindrome.isPalindrome("aba", offByOne));
         assertTrue(palindrome.isPalindrome("abb", offByOne));
@@ -35,5 +35,5 @@ public class TestPalindrome {
         assertFalse(palindrome.isPalindrome("aaa", offByN));
         assertTrue(palindrome.isPalindrome("abzed", offByN));
     }
-    
+
 }

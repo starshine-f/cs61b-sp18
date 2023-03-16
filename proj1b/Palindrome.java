@@ -26,7 +26,7 @@ public class Palindrome {
         **/
     }
 
-    public boolean isPalindromeHelp(Deque<Character> deque) {
+    private boolean isPalindromeHelp(Deque<Character> deque) {
         if (deque.size() == 0 || deque.size() == 1) {
             return true;
         }
