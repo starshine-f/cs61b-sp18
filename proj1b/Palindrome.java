@@ -11,7 +11,7 @@ public class Palindrome {
         Palindrome palindrome = new Palindrome();
         Deque<Character> deque = palindrome.wordToDeque(word);
         return isPalindromeHelp(deque);
-        
+
         /*  Not recursion
         if (deque.size() == 0 || deque.size() == 1) {
             return true;
@@ -37,4 +37,21 @@ public class Palindrome {
             return isPalindromeHelp(deque);
         }
     }
+
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        Palindrome palindrome = new Palindrome();
+        Deque<Character> deque = palindrome.wordToDeque(word);
+
+        if (deque.size() == 0 || deque.size() == 1) {
+            return true;
+        }
+
+        while (deque.size() > 1) {
+            if (!cc.equalChars(deque.removeFirst(), deque.removeLast())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

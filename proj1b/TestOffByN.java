@@ -12,4 +12,5 @@ public class TestOffByN {
         assertTrue(offByN.equalChars('a', 'f'));
         assertTrue(offByN.equalChars('f', 'a'));
     }
+
 }
