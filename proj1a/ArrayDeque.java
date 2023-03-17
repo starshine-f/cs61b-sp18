@@ -77,6 +77,7 @@ public class ArrayDeque<T> {
 		if (items.length >= 16 && size < items.length/4) {
 			resize(items.length/2);
 		}
+		return item;
 	}
 
 	/** Returns the item of the ith of the list. */
