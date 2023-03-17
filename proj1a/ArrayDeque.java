@@ -23,7 +23,7 @@ public class ArrayDeque<T> {
 
 	/** Adds the item to the front of the list. */
 	public void addFirst(T item) {
-		if (head - 1 == nextLast) {
+		if (head - 1 == tail) {
 			resize(items.length * 2);
 		}
 		items[head] = item;
@@ -33,7 +33,7 @@ public class ArrayDeque<T> {
 
 	/** Adds the item to the end of the list. */
 	public void addLast(T item) {
-		if (head - 1 == nextLast) {
+		if (head - 1 == tail) {
 			resize(items.length * 2);
 		}
 		items[tail] = item;
